@@ -1,17 +1,8 @@
-//Garrett Wayne 11/6/14 APCS
-//Mr. Leedy p.1
+//Garrett Wayne
+//
 //This program executes a range of expressions including 
 //those with fractions and mixed numbers
-
-/* PE: Your program structure is very good. You don't need two methods
- * to get numerator, denominator and whole number though, just one of
- * each; otherwise, there's a lot of duplicate code. You should be using 
- * the template provided, including package name and class name. This 
- * didn't initially work with FracCalcTest but it does now. I modified 
- * it, basically by replacing printlns with returns. All operations
- * work as expected.
- */
-
+//
 
 import java.util.Scanner;
 
@@ -38,20 +29,20 @@ public class FracCalc5 {
 		String secondOperand = getSecondOperand(input);
 		String operator = getOperator(input);
 		System.out.println("First operand = " + firstOperand
-				+ "; second operand = " + secondOperand + "; operator = "
-				+ operator);
+			+ "; second operand = " + secondOperand + "; operator = "
+			+ operator);
 
-		if (operator.equals("+")) { // Sends input to addition method for
-									// further evaluation
+		if (operator.equals("+")) { 		// Sends input to addition method for
+							// further evaluation
 			return addition(input);
-		} else if (operator.equals("-")) { // Sends input to subtraction method
-											// for further evaluation
+		} else if (operator.equals("-")) { 	// Sends input to subtraction method
+							// for further evaluation
 			return subtraction(input);
-		} else if (operator.equals("*")) { // Sends input to multiplication
-											// method for further evaluation
+		} else if (operator.equals("*")) { 	// Sends input to multiplication
+							// method for further evaluation
 			return multiplication(input);
-		} else if (operator.equals("/")) { // Sends input to division method for
-											// further evaluation
+		} else if (operator.equals("/")) { 	// Sends input to division method for
+							// further evaluation
 			return division(input);
 		} else {
 			return "Invalid operator!";
@@ -65,14 +56,13 @@ public class FracCalc5 {
 				+ (secondNum(input) + secondDenom(input)
 						* Math.abs(secondWholeNumber(input)))
 				* makeSure2(input) * firstDenom(input); // The formula for the
-														// answer's numerator
-		int denom = firstDenom(input) * secondDenom(input); // The formula for
-															// the answer's
-															// denominator
+									// answer's numerator
+		int denom = firstDenom(input) * secondDenom(input); 	// The formula for
+									// the answer's
+									// denominator
 
-		return simp(num, denom); // Takes the above Numerator and Denominator
-									// pair for
-		// simplification
+		return simp(num, denom); 	// Takes the above Numerator and Denominator
+						// pair for simplification
 	}
 
 	public static String subtraction(String input) {
@@ -83,30 +73,28 @@ public class FracCalc5 {
 				- (secondNum(input) + secondDenom(input)
 						* Math.abs(secondWholeNumber(input)))
 				* firstDenom(input) * makeSure2(input);
-		int denom = firstDenom(input) * secondDenom(input); // The formula for
-															// the answer's
-															// denominator
+		int denom = firstDenom(input) * secondDenom(input); 	// The formula for
+									// the answer's
+									// denominator
 
-		return simp(num, denom); // Takes the above Numerator and Denominator
-									// pair for
-		// simplification
+		return simp(num, denom); 	// Takes the above Numerator and Denominator
+						// pair for simplification
 	}
 
 	public static String multiplication(String input) {
 		int num = ((firstNum(input) + (Math.abs(firstWholeNumber(input)) * firstDenom(input))) * makeSure1(input))
-				* ((secondNum(input) + Math.abs(secondWholeNumber(input))
-						* secondDenom(input)) * makeSure2(input)); // The
-																	// formula
-																	// for the
-																	// answer's
-																	// numerator
-		int denom = firstDenom(input) * secondDenom(input); // The formula for
-															// the answer's
-															// denominator
+			* ((secondNum(input) + Math.abs(secondWholeNumber(input))
+			* secondDenom(input)) * makeSure2(input)); 	// The formula
+									// for the
+									// answer's
+									// numerator
+		
+		int denom = firstDenom(input) * secondDenom(input); 	// The formula for
+									// the answer's
+									// denominator
 
-		return simp(num, denom); // Takes the above Numerator and Denominator
-									// pair for
-		// simplification
+		return simp(num, denom); 	// Takes the above Numerator and Denominator
+						// pair for simplification
 	}
 
 	public static String division(String input) {
@@ -123,16 +111,15 @@ public class FracCalc5 {
 			denom *= -1;
 		}
 
-		return simp(num, denom); // Takes the above Numerator and Denominator
-									// pair for
-		// simplification
+		return simp(num, denom); 	// Takes the above Numerator and Denominator
+						// pair for simplification
 	}
 
-	public static int firstWholeNumber(String wholeNumber) { // Finds the first
-																// whole number
-																// and returns
-																// it to the
-																// formula
+	public static int firstWholeNumber(String wholeNumber) { 	// Finds the first
+									// whole number
+									// and returns
+									// it to the
+									// formula
 		int wholeNumber1 = 0;
 		int space = wholeNumber.indexOf(" ");
 		int under = wholeNumber.indexOf("_");
@@ -145,11 +132,11 @@ public class FracCalc5 {
 		return wholeNumber1;
 	}
 
-	public static int secondWholeNumber(String wholeNumber) { // Finds the
-																// second whole
-																// number and
-																// returns it to
-																// the formula
+	public static int secondWholeNumber(String wholeNumber) { 	// Finds the
+									// second whole
+									// number and
+									// returns it to
+									// the formula
 		int wholeNumber2 = 0;
 		int space = wholeNumber.lastIndexOf(" ");
 		int under = wholeNumber.lastIndexOf("_");
@@ -162,8 +149,8 @@ public class FracCalc5 {
 		return wholeNumber2;
 	}
 
-	public static int firstNum(String num) { // Finds the first numerator and
-												// returns it to the formula
+	public static int firstNum(String num) { 	// Finds the first numerator and
+							// returns it to the formula
 		String firstNum;
 		int space = num.indexOf(" ");
 		int slash = num.indexOf("/");
@@ -184,8 +171,8 @@ public class FracCalc5 {
 		return num1;
 	}
 
-	public static int secondNum(String num) { // Finds the second numerator and
-												// returns it to the formula
+	public static int secondNum(String num) { 	// Finds the second numerator and
+							// returns it to the formula
 		String secondNum;
 		int space = num.lastIndexOf(" ");
 		int slash = num.lastIndexOf("/");
@@ -206,9 +193,9 @@ public class FracCalc5 {
 		return num2;
 	}
 
-	public static int firstDenom(String denom) { // Finds the first denominator
-													// and returns it to the
-													// formula
+	public static int firstDenom(String denom) { 	// Finds the first denominator
+							// and returns it to the
+							// formula
 		String firstDenom = "1";
 		int space = denom.indexOf(" ");
 		int slash = denom.indexOf("/");
@@ -221,9 +208,9 @@ public class FracCalc5 {
 		return denom1;
 	}
 
-	public static int secondDenom(String denom) { // Finds the second
-													// denominator and returns
-													// it to the formula
+	public static int secondDenom(String denom) { 	// Finds the second
+							// denominator and returns
+							// it to the formula
 		String secondDenom = "1";
 		int space = denom.lastIndexOf(" ");
 		int slash = denom.lastIndexOf("/");
@@ -236,9 +223,9 @@ public class FracCalc5 {
 		return denom2;
 	}
 
-	public static int makeSure1(String ripe) { // This method makes sure that
-												// the signs and negatives are
-												// okay to evaluate
+	public static int makeSure1(String ripe) { 	// This method makes sure that
+							// the signs and negatives are
+							// okay to evaluate
 		int sign1 = 1;
 		if (firstWholeNumber(ripe) < 0) {
 			sign1 = -1;
@@ -247,9 +234,9 @@ public class FracCalc5 {
 		return sign1;
 	}
 
-	public static int makeSure2(String riper) { // This method makes sure that
-												// the signs and negatives are
-												// okay to evaluate
+	public static int makeSure2(String riper) { 	// This method makes sure that
+							// the signs and negatives are
+							// okay to evaluate
 		int sign2 = 1;
 		if (secondWholeNumber(riper) < 0) {
 			sign2 = -1;
@@ -273,72 +260,55 @@ public class FracCalc5 {
 			newNum = newNum % newDen;
 		}
 		if (newDen == 0) {
-			return "Error: can't divide by zero"; // Cannot divide
-													// by zero
+			return "Error: can't divide by zero"; 	// Cannot divide
+								// by zero
 		} else if (newNum == newDen) {
-			return "" + newNum / newDen; // Prints answer
-											// (ex. 10/10
-											// would equal
-											// 1)
+			return "" + newNum / newDen; 		// Prints answer
+								// (ex. 10/10 would equal 1)
 		} else if (newNum == 0 && newWholeNumber == 0) {
-			return "" + newWholeNumber; // Prints answer
-										// (ex. 1/2 -
-										// 1/2 would
-										// equal 0)
+			return "" + newWholeNumber; 		// Prints answer
+								// (ex. 1/2 - 1/2 would equal 0)
 		} else if (newWholeNumber == 0) {
-			return newNum + "/" + newDen; // Prints
-											// anwer
-											// (ex.
-											// 3/6 +
-											// 3/6
-											// would
-											// equal
-											// 5/6)
-
+			return newNum + "/" + newDen; 		// Prints answer 
+								// (ex. 3/6 + 3/6 would equal 5/6)
 		} else if (newNum == 0 && newWholeNumber != 0) {
-			return "" + newWholeNumber; // Prints answer
-										// (ex. 1/2 +
-										// 1/2 would
-										// equal 1)
+			return "" + newWholeNumber; 		// Prints answer
+								// (ex. 1/2 + 1/2 would equal 1)
 		}
-
 		else {
 			return newWholeNumber + "_" + Math.abs(newNum) + "/" + newDen;
-		} // Prints answer (ex. 2 + 3_1/4 would equal 5_1/4)
+		} 						// Prints answer (ex. 2 + 3_1/4 would equal 5_1/4)
 	}
 
-	private static String getFirstOperand(String input) { // Looks for the first
-															// operand in the
-															// input and returns
-															// the substring
+	private static String getFirstOperand(String input) { 	// Looks for the first
+								// operand in the
+								// input and returns
+								// the substring
 		// The first operand is the substring before the first space
 		return input.substring(0, input.indexOf(" "));
 	}
 
-	private static String getSecondOperand(String input) { // Looks for the
-															// second operand in
-															// the input and
-															// returns the
-															// substring
-		// The second operand is the substring after the second (i.e., last)
-		// space
+	private static String getSecondOperand(String input) { 	// Looks for the
+								// second operand in
+								// the input and
+								// returns the
+								// substring
+		// The second operand is the substring after the second (i.e., last) space
 		return input.substring(input.lastIndexOf(" ") + 1);
 	}
 
-	private static String getOperator(String input) { // Looks for the operator
-														// in the input and
-														// returns the substring
+	private static String getOperator(String input) { 	// Looks for the operator
+								// in the input and
+								// returns the substring
 		// The operator is the character after the first space
 		return input.substring(input.indexOf(" ") + 1, input.indexOf(" ") + 2);
 	}
 
-	private static String readLine(Scanner scanner) { // The actual scanner that
-														// the loop refers to
-														// and reads the input
+	private static String readLine(Scanner scanner) { 	// The actual scanner that
+								// the loop refers to
+								// and reads the input
 		System.out.println("Please enter an expression (or type \"quit\"): ");
 		return scanner.nextLine().trim().toLowerCase(); // ex. turns 'Quit' and
-														// 'QUIT ' into quit
+								// 'QUIT ' into quit
 	}
-
 }
-
